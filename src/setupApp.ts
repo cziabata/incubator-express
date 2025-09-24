@@ -1,5 +1,5 @@
 import express, { type Express } from "express";
-import { productsRouter } from "./routes/products.ts";
+import { productsRouter } from "./routes/products";
  
 export const setupApp = (app: Express) => {
 

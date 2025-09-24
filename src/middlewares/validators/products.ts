@@ -1,5 +1,5 @@
 import { body, param } from "express-validator";
-import { resultValidationMiddleware } from "./__result-validator.ts";
+import { resultValidationMiddleware } from "./__result-validator";
 
 export const titleInputValidator = body("title")
   .trim()

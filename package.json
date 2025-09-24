@@ -7,7 +7,6 @@
   "author": "cziabata",
   "license": "MIT",
   "private": false,
-  "type": "module",
   "scripts": {
     "watch": "tsc -w",
     "dev": "nodemon --inspect dist/index.js",

@@ -1,20 +1,21 @@
 import { Router } from "express";
-import { productsService } from "../services/products.ts";
+import { productsService } from "../services/products";
 import { 
   createProductValidators, 
   deleteProductValidators,
   getProductByIdValidators, 
   updateProductValidators 
-} from "../validators/products.ts";
+} from "../middlewares/validators/products";
+import { basicAuthGuardMiddleware } from "../middlewares/guards/basic-auth.guard";
 
 export const productsRouter = Router();
 
-productsRouter.get("/", productsService.getProducts);
+productsRouter.get("/", basicAuthGuardMiddleware, productsService.getProducts);
 
-productsRouter.get("/:id", ...getProductByIdValidators, productsService.getProductById);
+productsRouter.get("/:id", basicAuthGuardMiddleware, ...getProductByIdValidators, productsService.getProductById);
 
-productsRouter.post("/", ...createProductValidators, productsService.createProduct);
+productsRouter.post("/", basicAuthGuardMiddleware, ...createProductValidators, productsService.createProduct);
 
-productsRouter.put("/:id", ...updateProductValidators, productsService.updateProduct);
+productsRouter.put("/:id", basicAuthGuardMiddleware, ...updateProductValidators, productsService.updateProduct);
 
-productsRouter.delete("/:id", ...deleteProductValidators, productsService.deleteProduct);
+productsRouter.delete("/:id", basicAuthGuardMiddleware, ...deleteProductValidators, productsService.deleteProduct);

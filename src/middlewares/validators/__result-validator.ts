@@ -1,6 +1,6 @@
 import { validationResult, type ValidationError } from 'express-validator';
 import { type Request, type Response, type NextFunction } from 'express';
-import { HttpStatus } from '../types/http-status.ts';
+import { HttpStatus } from '../../types/http-status';
  
 const formatErrors = (error: ValidationError) => ({
   field: error.type === 'field' ? error.path : 'unknown', // Используем path для field errors
@@ -19,5 +19,5 @@ export const resultValidationMiddleware = (
   }
  
   next(); // Если ошибок нет, передаём управление дальше
-
+  return;
 };

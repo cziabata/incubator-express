@@ -1,4 +1,4 @@
-import { productsRepository } from "../repositories/products.ts";
+import { productsRepository } from "../repositories/products";
 import { type Request, type Response } from "express";
 
 export const productsService = {

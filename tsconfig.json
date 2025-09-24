@@ -3,31 +3,26 @@
 
     "rootDir": "./src",
     "outDir": "./dist",
+    
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
 
-    "module": "nodenext",
-    "target": "esnext",
-    // For nodejs:
+    "target": "es2016",  
+    "module": "commonjs", 
+
     "lib": ["esnext"],
     "types": ["node"],
-
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
-
-    "strict": true,
     "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
   },
   "include": ["src/**/*"],
   "exclude": ["__tests__", "dist", "node_modules"]
