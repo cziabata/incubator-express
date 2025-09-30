@@ -4,7 +4,7 @@ import { describe, test, expect, beforeAll } from '@jest/globals';
 import { setupApp } from "../src/setupApp";
 import type { Product } from "../src/types/products";
 
-describe('Demo API', () => {
+describe('Products API', () => {
 
   const app = express();
   setupApp(app);

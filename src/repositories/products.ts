@@ -45,4 +45,8 @@ export const productsRepository = {
     }
     return null;
   },
+
+  clearProducts(): void {
+    products = [];
+  },
 };

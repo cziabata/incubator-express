@@ -1,48 +1,39 @@
 import { productsRepository } from "../repositories/products";
-import { type Request, type Response } from "express";
+import { CreateProductDto, Product } from "../types/products";
 
 export const productsService = {
-  getProducts(req: Request, res: Response) {
-    const searchTitle = req.query.title ? req.query.title.toString() : "";
-
-    const products = productsRepository.getProducts(searchTitle);
-    res.send(products);
+  getProducts(searchTitle: string) {
+    return productsRepository.getProducts(searchTitle);
   },
 
-  getProductById(req: Request, res: Response) {
-    const id = parseInt(req.params.id as string);
+  getProductById(id: number): Product | null {
     const product = productsRepository.getProductById(id);
     if (product) {
-      res.send(product);
+      return product;
     } else {
-      res.status(404).send({ error: "Product not found" });
+      return null;
     }
   },
 
-  createProduct(req: Request, res: Response) {
-    const product = req.body;
+  createProduct(product: CreateProductDto): Product {
     const newProduct = productsRepository.createProduct(product);
-    res.status(201).send(newProduct);
+    return newProduct;
   },
 
-  updateProduct(req: Request, res: Response) {
-    const id = parseInt(req.params.id as string);
-    const product = req.body;
+  updateProduct(id: number, product: CreateProductDto): Product | null {
     const updatedProduct = productsRepository.updateProduct(id, product);
     if (!updatedProduct) {
-      res.status(404).send({ error: "Product not found" });
-      return;
+      return null;
     }
-    res.status(200).send(updatedProduct);
+    return updatedProduct;
   },
 
-  deleteProduct(req: Request, res: Response) {
-    const id = parseInt(req.params.id as string);
+  deleteProduct(id: number): Product | null {
     const deletedProduct = productsRepository.deleteProduct(id);
     if (deletedProduct) {
-      res.status(204).send();
+      return deletedProduct;
     } else {
-      res.status(404).send({ error: "Product not found" });
+      return null;
     }
   },
 };

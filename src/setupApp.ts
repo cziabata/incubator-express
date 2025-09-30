@@ -1,5 +1,6 @@
 import express, { type Express } from "express";
 import { productsRouter } from "./routes/products";
+import { testingRouter } from "./routes/testing";
  
 export const setupApp = (app: Express) => {
 
@@ -10,6 +11,8 @@ export const setupApp = (app: Express) => {
   })
   
   app.use('/products', productsRouter);
+
+  app.use('/testing', testingRouter);
 
   return app;
 };
